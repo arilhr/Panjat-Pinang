@@ -19,7 +19,11 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        InputPlayer();
+        if (GameManager.instance.gameState == 1)
+        {
+            InputPlayer();
+        }
+        
         textScore.text = score.ToString();
     }
 
@@ -50,6 +54,8 @@ public class Player : MonoBehaviour
             score += 10;
         }
     }
+
+    public int GetScore() { return score; }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
