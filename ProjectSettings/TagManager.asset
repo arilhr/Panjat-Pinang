@@ -4,9 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - prize1
-  - prize2
   - ground
+  - prize
   layers:
   - Default
   - TransparentFX
