@@ -18,9 +18,11 @@ public class Player : MonoBehaviour
     [SerializeField] private Slider slider;
     [SerializeField] private Text textScore;
     private UIManager uiManager;
+    private Animator playerAnim;
 
     private void Start()
     {
+        playerAnim = GetComponent<Animator>();
         uiManager = FindObjectOfType<UIManager>();
     }
 
@@ -54,6 +56,9 @@ public class Player : MonoBehaviour
     private void Climb()
     {
         transform.position = new Vector2(transform.position.x, transform.position.y + 0.5f);
+
+        // player climbing animation
+        playerAnim.SetTrigger("Climbing");
     }
 
     private void Loot()
@@ -71,6 +76,11 @@ public class Player : MonoBehaviour
             canLoot = false;
             score += sliderMaxValue;
             RandomGetItemDistract();
+
+            // falling animation
+            playerAnim.SetBool("isClimbing", false);
+            playerAnim.SetBool("isFalling", true);
+            playerAnim.SetTrigger("Falling");
         }
     }
 
@@ -98,6 +108,9 @@ public class Player : MonoBehaviour
             GameManager.instance.DistractedPlayer(this);
             hasItemDistract = false;
             itemDistractUI.gameObject.SetActive(false);
+
+            // distracting animation
+            playerAnim.SetTrigger("Distracting");
         }
     }
 
@@ -130,6 +143,8 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.tag == "ground")
         {
+            playerAnim.SetBool("isFalling", false);
+            playerAnim.SetBool("isClimbing", true);
             gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
             canClimb = true;
         }

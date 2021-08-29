@@ -13,7 +13,6 @@ public class Prize
             {"ringan", new string[] {"vga" } },
             {"sedang", new string[] {"microwave", "kursi" } },
             {"berat", new string[] {"tv", "sepeda"} },
-
         };
     }
 
