@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class Player : MonoBehaviour
 {
@@ -11,13 +12,16 @@ public class Player : MonoBehaviour
     public KeyCode useItemKey;
     private bool hasItemDistract = false;
     [SerializeField] private Image itemDistractUI;
+    [SerializeField] private Image prizeImage;
     private int score = 0;
+    private int sliderMaxValue = 100;
     [SerializeField] private Slider slider;
     [SerializeField] private Text textScore;
+    private UIManager uiManager;
 
     private void Start()
     {
-        
+        uiManager = FindObjectOfType<UIManager>();
     }
 
     private void Update()
@@ -54,15 +58,25 @@ public class Player : MonoBehaviour
 
     private void Loot()
     {
+        sliderMaxValue = uiManager.SetSliderMaxValueByScore(slider, score);
+
         slider.value += 10;
-        if(slider.value >= 100)
+
+        if (slider.value >= sliderMaxValue)
         {
+            string prize = GameManager.instance.GetRandomPrize(score);
+            ShowPrize(prize);
             gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
             slider.value = 0;
             canLoot = false;
-            score += 10;
+            score += sliderMaxValue;
             RandomGetItemDistract();
         }
+    }
+
+    private void ShowPrize(string prizeName)
+    {
+        uiManager.ShowPrize(prizeImage, prizeName);
     }
 
     private void RandomGetItemDistract()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -144,5 +144,24 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public string GetRandomPrize(int score)
+    {
+        string[] listPrize;
+
+        if(score >= 600)
+        {
+            listPrize = prize.GetPrizeByKey("berat");
+        }else if(score >= 300)
+        {
+            listPrize = prize.GetPrizeByKey("sedang");
+        }
+        else
+        {
+            listPrize = prize.GetPrizeByKey("ringan");
+        }
+
+        return listPrize[Random.Range(0, listPrize.Length)];
     }
 }
