@@ -13,8 +13,7 @@ public class GameManager : MonoBehaviour
     public UIManager gameUI;
 
     [Header("PLAYER")]
-    public Player player1;
-    public Player player2;
+    public Player[] player;
 
     [Header("GAME TIME")]
     private bool isBegin = false;
@@ -97,12 +96,12 @@ public class GameManager : MonoBehaviour
     private void GameEnd()
     {
         // check player 1 or player 2 win
-        if (player1.GetScore() > player2.GetScore())
+        if (player[0].GetScore() > player[1].GetScore())
         {
             // player 1 win
             gameUI.winnerText.text = "PLAYER 1 WIN";
         }
-        else if (player1.GetScore() < player2.GetScore())
+        else if (player[0].GetScore() < player[1].GetScore())
         {
             // player 2 win
             gameUI.winnerText.text = "PLAYER 2 WIN";
@@ -115,6 +114,14 @@ public class GameManager : MonoBehaviour
 
         gameState = 0;
         gameUI.gameEndUI.SetActive(true);
+    }
+
+    public void DistractedPlayer(Player itemUser)
+    {
+        foreach (Player p in player)
+        {
+            if (p != itemUser) p.Distracted();
+        }
     }
 
     public void PauseGame()

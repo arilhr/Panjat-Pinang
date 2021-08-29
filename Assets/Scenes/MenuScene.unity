@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 58306134}
   - component: {fileID: 58306133}
   - component: {fileID: 58306135}
+  - component: {fileID: 58306136}
   m_Layer: 5
   m_Name: Menu Panel
   m_TagString: Untagged
@@ -153,8 +154,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 271994182}
   - {fileID: 1053538225}
+  - {fileID: 271994182}
   - {fileID: 1799327498}
   - {fileID: 789623387}
   m_Father: {fileID: 327365630}
@@ -215,6 +216,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdcd7068d84cad74ab5d24338d6fd161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &58306136
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58306131}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4ee431dd48d289144bb6de972ac0b268, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &271994181
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,7 +265,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 58306132}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -779,7 +799,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 58306132}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -837,7 +857,7 @@ GameObject:
   - component: {fileID: 1067998296}
   - component: {fileID: 1067998297}
   m_Layer: 0
-  m_Name: BG Music
+  m_Name: BGM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -855,7 +875,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ae5a6a783aa75a249ac528e7230ca1e7, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0

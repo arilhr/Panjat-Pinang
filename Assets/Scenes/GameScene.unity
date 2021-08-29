@@ -219,7 +219,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &106091758
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1558,10 +1558,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameState: 0
   gameUI: {fileID: 500622666}
-  player1: {fileID: 980802696}
-  player2: {fileID: 1015917042}
+  player:
+  - {fileID: 980802696}
+  - {fileID: 1015917042}
   timeToStart: 4
-  gameTime: 10
+  gameTime: 60
 --- !u!4 &715927675
 Transform:
   m_ObjectHideFlags: 0
@@ -2053,6 +2054,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   climbKey: 115
+  useItemKey: 100
+  itemDistractUI: {fileID: 106091759}
   slider: {fileID: 1667234341}
   textScore: {fileID: 270740807}
 --- !u!212 &980802697
@@ -2199,7 +2202,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ff205704671144f836ee10137cea20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  climbKey: 100
+  climbKey: 107
+  useItemKey: 108
+  itemDistractUI: {fileID: 1523899371}
   slider: {fileID: 1427098007}
   textScore: {fileID: 1791095340}
 --- !u!212 &1015917043
@@ -2990,7 +2995,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1523899370
 RectTransform:
   m_ObjectHideFlags: 0

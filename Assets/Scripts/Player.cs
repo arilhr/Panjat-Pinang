@@ -8,6 +8,9 @@ public class Player : MonoBehaviour
     public KeyCode climbKey;
     private bool canClimb = true;
     private bool canLoot;
+    public KeyCode useItemKey;
+    private bool hasItemDistract = false;
+    [SerializeField] private Image itemDistractUI;
     private int score = 0;
     [SerializeField] private Slider slider;
     [SerializeField] private Text textScore;
@@ -32,9 +35,15 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(climbKey) && canClimb)
         {
             Climb();
-        }else if (Input.GetKeyDown(climbKey) && canLoot)
+        }
+        else if (Input.GetKeyDown(climbKey) && canLoot)
         {
             Loot();
+        }
+
+        if (Input.GetKeyDown(useItemKey))
+        {
+            UseItemDistract();
         }
     }
 
@@ -52,8 +61,45 @@ public class Player : MonoBehaviour
             slider.value = 0;
             canLoot = false;
             score += 10;
+            RandomGetItemDistract();
         }
     }
+
+    private void RandomGetItemDistract()
+    {
+        if (!hasItemDistract)
+        {
+            if (Random.Range(0, 3) == 2)
+            {
+                hasItemDistract = true;
+                itemDistractUI.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    private void UseItemDistract()
+    {
+        if (hasItemDistract)
+        {
+            GameManager.instance.DistractedPlayer(this);
+            hasItemDistract = false;
+            itemDistractUI.gameObject.SetActive(false);
+        }
+    }
+
+    public void Distracted()
+    {
+        // cancel loot
+        canLoot = false;
+        slider.value = 0;
+
+        // cancel climb
+        canClimb = false;
+
+        // tibo
+        gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+    }
+
 
     public int GetScore() { return score; }
 
