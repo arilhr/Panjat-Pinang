@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     public Sprite chair;
     public Sprite tv;
     public Sprite vga;
+    public Sprite kaos;
     public Sprite microwave;
     public Sprite bicycle;
 
@@ -63,6 +64,9 @@ public class UIManager : MonoBehaviour
                 break;
             case "bicycle":
                 image.sprite = bicycle;
+                break;
+            case "kaos":
+                image.sprite = kaos;
                 break;
         }
 

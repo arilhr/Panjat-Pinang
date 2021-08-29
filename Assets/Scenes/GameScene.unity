@@ -1176,7 +1176,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -487.39, y: -33.532}
-  m_SizeDelta: {x: 445.23, y: 454.49}
+  m_SizeDelta: {x: 550, y: 550}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &498989559
 MonoBehaviour:
@@ -1341,6 +1341,7 @@ MonoBehaviour:
   chair: {fileID: 21300000, guid: 4b2926a0bdcaeaf459da61bfc9a41e82, type: 3}
   tv: {fileID: 21300000, guid: d6377e494a744ea439ed76bcf74c6a89, type: 3}
   vga: {fileID: 21300000, guid: 7f64e1d163a789b418697650de5f0c86, type: 3}
+  kaos: {fileID: 21300000, guid: 4f72efcb6ad56494d88c9660a2fc84a9, type: 3}
   microwave: {fileID: 21300000, guid: bb7a7dddb6415854c83f3fb73eb0e80e, type: 3}
   bicycle: {fileID: 21300000, guid: f6ae21ecfb2135c4688eee5b1cdb5f2c, type: 3}
 --- !u!1 &514651847
@@ -1644,7 +1645,8 @@ MonoBehaviour:
   - {fileID: 980802696}
   - {fileID: 1015917042}
   timeToStart: 4
-  gameTime: 60
+  gameTime: 69
+  endAudio: {fileID: 8300000, guid: e53339faf4e84774a87abf1030d19d13, type: 3}
 --- !u!4 &715927675
 Transform:
   m_ObjectHideFlags: 0
@@ -2763,7 +2765,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 485.84, y: -33.533}
-  m_SizeDelta: {x: 448.32, y: 454.49}
+  m_SizeDelta: {x: 550, y: 550}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1510271816
 MonoBehaviour:
@@ -3929,6 +3931,10 @@ PrefabInstance:
     - target: {fileID: 5708158296746763336, guid: 7f2ded47f8ba324438f612d1ac34f4bc, type: 3}
       propertyPath: m_Name
       value: Player 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5708158297383631055, guid: 7f2ded47f8ba324438f612d1ac34f4bc, type: 3}
+      propertyPath: m_Volume
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f2ded47f8ba324438f612d1ac34f4bc, type: 3}

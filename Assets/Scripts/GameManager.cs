@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     public float gameTime = 30f;
     private float currentGameTime;
 
+    private AudioSource audioSource;
+    public AudioClip endAudio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +33,7 @@ public class GameManager : MonoBehaviour
 
         instance = this;
 
+        audioSource = GetComponent<AudioSource>();
         // start game
         StartGame();
     }
@@ -95,6 +99,8 @@ public class GameManager : MonoBehaviour
 
     private void GameEnd()
     {
+        audioSource.PlayOneShot(endAudio);
+
         // check player 1 or player 2 win
         if (player[0].GetScore() > player[1].GetScore())
         {

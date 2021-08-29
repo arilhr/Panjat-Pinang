@@ -20,9 +20,16 @@ public class Player : MonoBehaviour
     private UIManager uiManager;
     private Animator playerAnim;
 
+    [Header("Sound FX")]
+    public AudioClip climbSound;
+    public AudioClip fallSound;
+    public AudioClip oilSound;
+    private AudioSource playerAudio;
+
     private void Start()
     {
         playerAnim = GetComponent<Animator>();
+        playerAudio = GetComponent<AudioSource>();
         uiManager = FindObjectOfType<UIManager>();
     }
 
@@ -59,6 +66,9 @@ public class Player : MonoBehaviour
 
         // player climbing animation
         playerAnim.SetTrigger("Climbing");
+
+        // play audio
+        playerAudio.PlayOneShot(climbSound);
     }
 
     private void Loot()
@@ -81,6 +91,9 @@ public class Player : MonoBehaviour
             playerAnim.SetBool("isClimbing", false);
             playerAnim.SetBool("isFalling", true);
             playerAnim.SetTrigger("Falling");
+
+            // fall audio
+            playerAudio.PlayOneShot(fallSound);
         }
     }
 
@@ -111,6 +124,9 @@ public class Player : MonoBehaviour
 
             // distracting animation
             playerAnim.SetTrigger("Distracting");
+            
+            // audio
+            playerAudio.PlayOneShot(oilSound);
         }
     }
 

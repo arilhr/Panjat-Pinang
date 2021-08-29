@@ -10,7 +10,7 @@ public class Prize
     {
         prize = new Dictionary<string, string[]>()
         {
-            {"ringan", new string[] {"vga" } },
+            {"ringan", new string[] {"vga", "kaos"} },
             {"sedang", new string[] {"microwave", "kursi" } },
             {"berat", new string[] {"tv", "sepeda"} },
         };
