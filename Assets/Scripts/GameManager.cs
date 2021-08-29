@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public Prize prize;
 
     public static GameManager instance;
-    [HideInInspector] public int gameState; // 0: begin | 1: playing | 2: end
+    [HideInInspector] public int gameState; // 0: pause | 1: playing
     public UIManager gameUI;
 
     [Header("PLAYER")]
@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public Player player2;
 
     [Header("GAME TIME")]
+    private bool isBegin = false;
     public float timeToStart = 3f;
     private float currentTimeToStart;
     public float gameTime = 30f;
@@ -30,13 +31,13 @@ public class GameManager : MonoBehaviour
 
         instance = this;
 
-        gameState = 2;
+        StartGame();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameState == 0)
+        if (isBegin)
         {
             CountdownToPlay();
         }
@@ -47,15 +48,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void StartGame()
+    private void StartGame()
     {
+        gameState = 0;
         currentGameTime = gameTime;
         currentTimeToStart = timeToStart;
+        isBegin = true;
 
         // update ui
-        gameUI.startingUI.SetActive(false);
         gameUI.timeToStartText.gameObject.SetActive(true);
-        gameState = 0;
     }
 
     private void CountdownToPlay()
@@ -107,11 +108,22 @@ public class GameManager : MonoBehaviour
         else
         {
             // draw
-            gameUI.winnerText.text = "SERI";
+            gameUI.winnerText.text = "YOU BOTH WIN";
         }
 
-        gameState = 2;
+        gameState = 0;
         gameUI.gameEndUI.SetActive(true);
+    }
+
+
+    public void PauseGame()
+    {
+
+    }
+
+    public void BackMenu()
+    {
+        SceneManager.LoadScene("MenuScene");
     }
 
     public void RestartGame()
