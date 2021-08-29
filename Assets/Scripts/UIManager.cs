@@ -15,5 +15,6 @@ public class UIManager : MonoBehaviour
     public Text winnerText;
     public GameObject gameEndUI;
 
-    
+    [Header("PAUSE UI")]
+    public GameObject pauseUI;
 }

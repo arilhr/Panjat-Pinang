@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
 
         instance = this;
 
+        // start game
         StartGame();
     }
 
@@ -66,6 +67,7 @@ public class GameManager : MonoBehaviour
         if (currentTimeToStart <= 0)
         {
             currentTimeToStart = 0;
+            isBegin = false;
             StartPlaying();
         }
 
@@ -115,10 +117,16 @@ public class GameManager : MonoBehaviour
         gameUI.gameEndUI.SetActive(true);
     }
 
-
     public void PauseGame()
     {
+        Time.timeScale = 0;
+        gameState = 0;
+    }
 
+    public void UnpauseGame()
+    {
+        Time.timeScale = 1;
+        gameState = 1;
     }
 
     public void BackMenu()
